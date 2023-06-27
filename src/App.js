@@ -20,10 +20,9 @@ function handleSubmit(event) {
 
 function App() {
   return(
-    <div>
+    <Box>
       
-    </div>
-    
+    </Box>
   )
 }
 

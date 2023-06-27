@@ -3,9 +3,10 @@ import axios from 'axios';
 // this function takes in an uploaded file and 
 async function get_image(formData){
     try {
-      const response = await axios.post('http://127.0.0.1:8000/splitfiles/image', formData,{
+      const response = await axios.post('https://backendmotionphotos.ccorso.ca/splitfiles/image', formData,{
         headers: {
-          'Content-Type': 'multipart/form-data'
+          'Content-Type': 'multipart/form-data',
+          'Access-Control-Allow-Origin': '*'
         },
         responseType: 'arraybuffer'
       });
@@ -22,12 +23,15 @@ async function get_image(formData){
   
   async function get_video(formData){
     try {
-      const response = await axios.post('http://127.0.0.1:8000/splitfiles/video', formData, {
+      console.log("hello")
+      const response = await axios.post('https://backendmotionphotos.ccorso.ca/splitfiles/video', formData, {
         headers: {
-          Accept: 'video/mp4;charset=UTF-8'
+          Accept: 'video/mp4;charset=UTF-8',
+          'Access-Control-Allow-Origin': '*'
         },
         responseType: 'blob'
       });
+      console.log("hi")
       console.log(response);
       const URL = window.URL || window.webkitURL;
       const url = URL.createObjectURL(new Blob([response.data], {type: "video/mp4"}));
